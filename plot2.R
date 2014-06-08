@@ -1,0 +1,7 @@
+source("dataprep.R")
+cleanData()
+d <- loadData()
+plot(as.POSIXct(paste(d$Date, d$Time), "%d/%m/%Y %H:%M:%S", tz="EST"), d$Global_active_power, ylab = "Global Active Power (kilowatts)", type="n", xlab="")
+lines(as.POSIXct(paste(d$Date, d$Time), "%d/%m/%Y %H:%M:%S", tz="EST"), d$Global_active_power)
+dev.copy(png, file = "plot2.png")
+dev.off()
