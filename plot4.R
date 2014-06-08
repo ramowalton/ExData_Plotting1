@@ -1,6 +1,8 @@
 source("dataprep.R")
+#clean and load data
 cleanData()
 d <- loadData()
+#create charts
 par(mfrow = c(2, 2))
 with(d, {
 	#chart 1
@@ -23,5 +25,6 @@ with(d, {
 	lines(as.POSIXct(paste(d$Date, d$Time), "%d/%m/%Y %H:%M:%S", tz="EST"), d$Global_reactive_power)
 }
 )
+#output to PNG file
 dev.copy(png, file = "plot4.png")
 dev.off()
